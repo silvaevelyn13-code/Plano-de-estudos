@@ -177,6 +177,19 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 /* ===== RESPONSIVIDADE IPHONE ===== */
 @media (max-width: 768px) {
 
+  .stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-height: 64px;
+}
+
+.stat .lbl {
+  white-space: nowrap;
+  line-height: 1.1;
+}
+  
 header {
   padding: 10px 14px;
   gap: 10px;
