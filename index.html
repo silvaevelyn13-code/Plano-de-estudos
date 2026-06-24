@@ -177,6 +177,26 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 /* ===== RESPONSIVIDADE IPHONE ===== */
 @media (max-width: 768px) {
 
+header {
+  padding: 10px 14px;
+  gap: 10px;
+}
+
+.logo h1 {
+  font-size: 13px;
+  line-height: 1.1;
+}
+
+.logo p {
+  display: none; /* isso reduz MUITO a altura */
+}
+
+.period {
+  font-size: 10px;
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+  
 .month-list {
   display: none;
   flex-direction: column;
