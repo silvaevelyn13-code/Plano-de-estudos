@@ -269,11 +269,17 @@ header {
   
 .month-list {
   display: none;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 6px;
+  overflow-x: auto;
   width: 100%;
   margin-top: 8px;
 }
 
+  .month-list .mbtn {
+  flex-shrink: 0;
+}
+  
 .month-dropdown.open .month-list {
   display: flex;
 }
