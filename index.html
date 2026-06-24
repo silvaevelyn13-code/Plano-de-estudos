@@ -296,15 +296,40 @@ header {
     height: auto;
   }
 
-.sidebar {
-  width: 100%;
-  min-width: 100%;
-  border-right: none;
-  border-bottom: 1px solid var(--border);
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch; /* rolagem suave no iPhone */
+    scrollbar-width: none; /* esconde scrollbar no Firefox */
+  }
 
-  display: block; /* <- MUITO IMPORTANTE mudar de flex */
-  padding: 8px;
-}
+  .sidebar::-webkit-scrollbar {
+    display: none; /* esconde scrollbar no Chrome/Safari */
+  }
+
+  .mbtn {
+    flex-shrink: 0;
+    width: auto;
+    white-space: nowrap;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+  }
+
+  .mbtn.active {
+    border-left: 1px solid var(--accent); /* reseta o border-left especial */
+    background: var(--surface2);
+    border-color: var(--accent);
+    padding-left: 12px; /* volta ao normal */
+  }
 
   .sb-label {
     display: none;
