@@ -184,10 +184,9 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
   min-height: unset;
 }
   
-  .stats-bar {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
+.stats-bar {
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 1px;
 }
 
   .stat {
