@@ -177,26 +177,32 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 /* ===== RESPONSIVIDADE IPHONE ===== */
 @media (max-width: 768px) {
 
+@media (max-width: 768px) {
+
+  .stats-bar {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 6px;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    min-height: 64px;
+    padding: 10px 8px;
+  }
+
   .stat .val {
     font-size: 16px;
   }
 
   .stat .lbl {
     font-size: 9px;
+    line-height: 1.1;
+    white-space: nowrap;
   }
-}
-  
-  .stat {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2px;
-  min-height: 64px;
-}
 
-.stat .lbl {
-  white-space: nowrap;
-  line-height: 1.1;
 }
   
 header {
@@ -299,8 +305,9 @@ header {
   }
 
   .stats-bar {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 6px;
+}
 
   .whead {
     flex-wrap: wrap;
