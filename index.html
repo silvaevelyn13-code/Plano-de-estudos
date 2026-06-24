@@ -729,25 +729,46 @@ let activeMonth=MONTHS[0].id;
 ───────────────────────────────────────── */
 function updateStats(){
   let doneW=0,doneH=0,doneAv=0;
-  const discSet=new Set();
-  MONTHS.forEach(m=>m.weeks.forEach(w=>{
-    if(ST['w'+w.n]){doneW++;doneH+=w.hours;if(w.av)doneAv++;discSet.add(w.disc);}
-  }));
+const discProgress = Array(12).fill(0);
+const discTotal = Array(12).fill(0);
+
+MONTHS.forEach(m => {
+  m.weeks.forEach(w => {
+    const blocks = getBlocks(w.n, w.disc);
+
+    discTotal[w.disc] += blocks.length;
+    discProgress[w.disc] += blocks.filter(b => b.done).length;
+
+    if (ST['w' + w.n]) {
+      doneW++;
+      doneH += w.hours;
+      if (w.av) doneAv++;
+    }
+  });
+});
+
+const completedDisc = discProgress.filter((done, i) => done > 0 && done === discTotal[i]).length;
   document.getElementById('s-sem').textContent=doneW+'/52';
-  document.getElementById('s-disc').textContent=discSet.size+'/12';
+  
   document.getElementById('s-h').textContent=doneH+'h';
   document.getElementById('s-av').textContent=doneAv+'/12';
-  const pct=Math.round(doneH/360*100);
-  document.getElementById('s-pct').textContent=pct+'%';
-  document.getElementById('p-fill').style.width=pct+'%';
-  document.getElementById('p-lbl').textContent=doneH+' / 360h';
-  MONTHS.forEach(m=>{
-    const btn=document.getElementById('mb_'+m.id);
-    if(!btn)return;
-    const done=m.weeks.filter(w=>ST['w'+w.n]).length;
-    btn.querySelector('.mk').textContent=done+'/'+m.weeks.length;
+  let totalBlocks = 0;
+let doneBlocks = 0;
+
+MONTHS.forEach(m => {
+  m.weeks.forEach(w => {
+    const blocks = getBlocks(w.n, w.disc);
+    totalBlocks += blocks.length;
+    doneBlocks += blocks.filter(b => b.done).length;
   });
-}
+});
+
+const pct = totalBlocks ? Math.round((doneBlocks / totalBlocks) * 100) : 0;
+
+document.getElementById('s-pct').textContent = pct + '%';
+document.getElementById('p-fill').style.width = pct + '%';
+document.getElementById('p-lbl').textContent = `${doneBlocks} / ${totalBlocks} blocos`;
+
 
 /* ─────────────────────────────────────────
    SIDEBAR
