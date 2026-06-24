@@ -268,17 +268,24 @@ header {
 }
   
 .month-list {
-  display: flex !important;
-  flex-direction: row;
-  gap: 6px;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+}
 
-  overflow-x: auto;
-  overflow-y: hidden;
+.month-dropdown.open .month-list {
+  display: flex;
+}
 
-  white-space: nowrap;
-  padding-bottom: 4px;
-
-  scrollbar-width: thin;
+.month-toggle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  text-align: left;
+}
 
 .month-dropdown.open .month-list {
   display: flex;
@@ -717,9 +724,14 @@ function updateStats(){
 function renderSidebar(){
   let h = `
  <div class="month-dropdown">
-  <button class="month-toggle">Meses</button>
+  <button class="month-toggle">
+    Meses
+  </button>
 
   <div class="month-list">
+    <!-- seus botões Jan, Fev, Mar... -->
+  </div>
+</div>
   `;
 
   MONTHS.forEach(m=>{
