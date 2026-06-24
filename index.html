@@ -723,15 +723,12 @@ function updateStats(){
 ───────────────────────────────────────── */
 function renderSidebar(){
   let h = `
- <div class="month-dropdown">
-  <button class="month-toggle">
-    Meses
-  </button>
+    <div class="month-dropdown">
+      <button class="month-toggle" onclick="this.parentElement.classList.toggle('open')">
+        Meses
+      </button>
 
-  <div class="month-list">
-    <!-- seus botões Jan, Fev, Mar... -->
-  </div>
-</div>
+      <div class="month-list">
   `;
 
   MONTHS.forEach(m=>{
