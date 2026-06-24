@@ -280,6 +280,9 @@ header {
 
   scrollbar-width: thin;
 
+.month-dropdown.open .month-list {
+  display: flex;
+}
   
   .layout {
     flex-direction: column;
@@ -713,8 +716,10 @@ function updateStats(){
 ───────────────────────────────────────── */
 function renderSidebar(){
   let h = `
+ <div class="month-dropdown">
+  <button class="month-toggle">Meses</button>
+
   <div class="month-list">
-  </div>
   `;
 
   MONTHS.forEach(m=>{
