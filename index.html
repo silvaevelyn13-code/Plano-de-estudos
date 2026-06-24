@@ -178,13 +178,20 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 
 @media (max-width: 768px) {
 
+
+  .stats-bar {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    gap: 0;
+  }
+
+
   .stat {
   padding: 8px 6px;
   height: auto;
   min-height: unset;
 }
   
-.stats-bar {
+  .stats-bar {
   grid-template-columns: repeat(3, minmax(90px, 1fr));
   gap: 1px;
 }
@@ -310,10 +317,7 @@ header {
     padding: 12px;
   }
 
-  .stats-bar {
-  grid-template-columns: repeat(3, minmax(90px, 1fr));
-  gap: 6px;
-}
+
 
   .whead {
     flex-wrap: wrap;
