@@ -173,6 +173,71 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ===== RESPONSIVIDADE IPHONE ===== */
+@media (max-width: 768px) {
+
+  .layout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 8px;
+  }
+
+  .sb-label {
+    display: none;
+  }
+
+  .mbtn {
+    width: auto;
+    min-width: max-content;
+    border-radius: 8px;
+    margin-right: 6px;
+  }
+
+  .main {
+    padding: 12px;
+  }
+
+  .stats-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .whead {
+    flex-wrap: wrap;
+  }
+
+  .wright {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .tab {
+    flex-shrink: 0;
+  }
+
+  .sched-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+  
 </style>
 </head>
 <body>
