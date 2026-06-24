@@ -175,14 +175,20 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 ::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
 
 /* ===== RESPONSIVIDADE IPHONE ===== */
-@media (max-width: 768px) {
 
 @media (max-width: 768px) {
 
+  .stat {
+  padding: 8px 6px;
+  height: auto;
+  min-height: unset;
+}
+  
   .stats-bar {
-    grid-template-columns: repeat(3, minmax(90px, 1fr));
-    gap: 6px;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
 
   .stat {
     display: flex;
@@ -195,11 +201,12 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 
   .stat .val {
     font-size: 15px;
-  }
+      line-height: 1;
+}
 
   .stat .lbl {
     font-size: 8px;
-    line-height: 1.05;
+    line-height: 1;
     white-space: nowrap;
   }
 
