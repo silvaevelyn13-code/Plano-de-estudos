@@ -323,7 +323,36 @@ header {
     padding: 12px;
   }
 
+.month-dropdown {
+  position: relative;
+  width: 100%;
+}
 
+.month-toggle {
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+/* 👇 A PARTE IMPORTANTE */
+.month-list {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding: 8px 6px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* impede quebra de linha dos botões */
+.month-list .mbtn {
+  flex: 0 0 auto;
+}
 
   .whead {
     flex-wrap: wrap;
@@ -1055,37 +1084,6 @@ function toggleMonths(){
     .classList.toggle('open');
 }
 
-.month-dropdown {
-  position: relative;
-  width: 100%;
-}
-
-.month-toggle {
-  width: 100%;
-  padding: 8px 12px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  color: var(--text);
-  font-size: 12px;
-  border-radius: 8px;
-}
-
-/* 👇 A PARTE IMPORTANTE */
-.month-list {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  padding: 8px 6px;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* impede quebra de linha dos botões */
-.month-list .mbtn {
-  flex: 0 0 auto;
-}
-  
   
 /* ─────────────────────────────────────────
    INIT
