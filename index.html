@@ -202,18 +202,15 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
     height: auto;
   }
 
-  .sidebar {
-    width: 100%;
-    min-width: 100%;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
+.sidebar {
+  width: 100%;
+  min-width: 100%;
+  border-right: none;
+  border-bottom: 1px solid var(--border);
 
-    display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    padding: 8px;
-  }
+  display: block; /* <- MUITO IMPORTANTE mudar de flex */
+  padding: 8px;
+}
 
   .sb-label {
     display: none;
@@ -633,14 +630,31 @@ function updateStats(){
    SIDEBAR
 ───────────────────────────────────────── */
 function renderSidebar(){
-  let h='<div style="padding:10px 0 4px"><div class="sb-label">Meses</div>';
+  let h = `
+  <div class="month-dropdown">
+    <button class="month-toggle" onclick="toggleMonths()">
+      📅 Meses ▾
+    </button>
+
+    <div class="month-list">
+  `;
+
   MONTHS.forEach(m=>{
     const hasAv=m.weeks.some(w=>w.av);
     const done=m.weeks.filter(w=>ST['w'+w.n]).length;
-    h+=`<button id="mb_${m.id}" class="mbtn ${hasAv?'av-month':''} ${m.id===activeMonth?'active':''}"
-      onclick="selMonth('${m.id}')">${m.label}<span class="mk">${done}/${m.weeks.length}</span></button>`;
+
+    h+=`
+      <button id="mb_${m.id}"
+        class="mbtn ${hasAv?'av-month':''} ${m.id===activeMonth?'active':''}"
+        onclick="selMonth('${m.id}')">
+        ${m.label}
+        <span class="mk">${done}/${m.weeks.length}</span>
+      </button>
+    `;
   });
-  h+='</div>';
+
+  h+=`</div></div>`;
+
   document.getElementById('sidebar').innerHTML=h;
 }
 
@@ -942,6 +956,12 @@ function escHtml(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
+function toggleMonths(){
+  document.querySelector('.month-dropdown')
+    .classList.toggle('open');
+}
+
+  
 /* ─────────────────────────────────────────
    INIT
 ───────────────────────────────────────── */
