@@ -177,6 +177,26 @@ header{background:var(--surface);border-bottom:1px solid var(--border);padding:1
 /* ===== RESPONSIVIDADE IPHONE ===== */
 @media (max-width: 768px) {
 
+.month-list {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.month-dropdown.open .month-list {
+  display: flex;
+}
+
+.month-toggle {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  text-align: left;
+}
+  
   .layout {
     flex-direction: column;
     height: auto;
